@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_corvit/foodOnboardingScreen.dart';
 import 'package:mobile_app_corvit/homeScreen.dart';
 import 'package:mobile_app_corvit/medicalHomeScrreen.dart';
 import 'package:mobile_app_corvit/sampleScreen.dart';
@@ -30,7 +31,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       showLoader: true,
       loadingText: Text("Loading..."),
-      navigator: MedicalHomeScreen(),
+      navigator: OnBoardingScreen(),
       durationInSeconds: 5,
     );
   }
