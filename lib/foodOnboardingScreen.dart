@@ -86,12 +86,13 @@ class _OnBoardingSTFState extends State<OnBoardingSTF> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: height*0.03 ,left: width*0.05),
+                  margin: EdgeInsets.only(top: height*0.03 ,left: width*0.05,right: width*0.05),
                   child: Text(
                     'Our job is to filling your tummy with delicious food and fast delivery',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 17,
+                      color: Colors.grey.shade700,
+                      fontSize: 16,
                       fontFamily: 'poppins',
 
                     ),
