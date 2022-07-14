@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_corvit/foodHomeScreen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -111,7 +112,12 @@ class _OnBoardingSTFState extends State<OnBoardingSTF> {
                         borderRadius: BorderRadius.circular(width*0.3)
                       ),
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>FoodHomeScreen())
+                      );
+
+                    },
                     child: Text('Get Started',
                      style: TextStyle(
                        fontFamily: 'poppins',

@@ -82,6 +82,7 @@ flutter:
       - asset: assets/font/Poppins-Bold.ttf
       - asset: assets/font/Poppins-Regular.ttf
       - asset: assets/font/Poppins-Medium.ttf
+      - asset: assets/font/Poppins-SemiBold.ttf
 
 
 
