@@ -26,6 +26,33 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
   late double width;
   late double height;
 
+  List<String> productNameList=[
+    'Facial Cleanser',
+    'Face Wash',
+    'Toner',
+    'Hair Serum',
+  ];
+
+
+  List<String> productPriceList=[
+    '19.98',
+    '3.78',
+    '15.67',
+    '12.87',
+  ];
+  List<String> productSizeList=[
+    'Size: 7.60 fl oz/225ml',
+    'Size: 9.31 fl oz/400ml',
+    'Size: 3.45 fl oz/55ml',
+    'Size: 4.76 fl oz/900ml',
+  ];
+  List<String> productImageList=[
+    'assets/images/facial_product.png',
+    'assets/images/facial_product.png',
+    'assets/images/facial_product.png',
+    'assets/images/facial_product.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
@@ -99,7 +126,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                 width: width,
                 margin: EdgeInsets.only(top: height*0.025),
                 child: ListView.builder(
-                  itemCount: 8,
+                  itemCount: productNameList.length,
                   itemBuilder: (BuildContext context, index){
                     return Container(
                       margin: EdgeInsets.only(left: width*0.05,top: height*0.03),
@@ -117,7 +144,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                               child: Container(
                                 padding: EdgeInsets.all(width*0.015),
                                 child: Image.asset(
-                                  'assets/images/facial_product.png',
+                                  productImageList[index],
                                 ),
                               ),
                             ),
@@ -129,8 +156,8 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  child: const Text(
-                                    'Facial Cleanser',
+                                  child: Text(
+                                    productNameList[index],
                                     style: TextStyle(
                                         fontFamily: 'poppins',
                                         fontWeight: FontWeight.w600,
@@ -140,7 +167,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                                 ),
                                 Container(
                                   child: Text(
-                                    'Size: 7.60 fl oz /225ml ',
+                                    productSizeList[index],
                                     style: TextStyle(
                                         color: Colors.grey.shade500,
                                         fontFamily: 'poppins',
@@ -150,8 +177,8 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                                   ),
                                 ),
                                 Container(
-                                  child: const Text(
-                                    '\$19.98',
+                                  child:Text(
+                                    '\$'+productPriceList[index],
                                     style: TextStyle(
                                         fontFamily: 'poppins',
                                         fontWeight: FontWeight.w600,
