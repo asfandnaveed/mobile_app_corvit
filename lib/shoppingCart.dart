@@ -52,6 +52,13 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
     'assets/images/facial_product.png',
     'assets/images/facial_product.png',
   ];
+  List<int> productCartCountList=[
+    1,
+    1,
+    1,
+    1
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +157,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                             ),
                           ),
                           Container(
+                            width: width*0.35,
                             margin: EdgeInsets.only(left: width*0.04),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -193,25 +201,35 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                             margin: EdgeInsets.only(top: height*0.06,left: width*0.06),
                             child: Row(
                               children: [
-                                Container(
-                                  width: width*0.065,
-                                  height: width*0.065,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    border: Border.all(
-                                        width: 2.0
-                                    ),
-                                  ),
-                                  child: Icon(
-                                    Icons.remove_rounded,
-                                    size: width*0.05,
+                                InkWell(
+                                  onTap: (){
+                                   if(productCartCountList[index] >1){
 
+                                     setState((){
+                                       productCartCountList[index]--;
+                                     });
+                                   }
+                                  },
+                                  child: Container(
+                                    width: width*0.065,
+                                    height: width*0.065,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      border: Border.all(
+                                          width: 2.0
+                                      ),
+                                    ),
+                                    child: Icon(
+                                      Icons.remove_rounded,
+                                      size: width*0.05,
+
+                                    ),
                                   ),
                                 ),
                                 Container(
                                   margin: EdgeInsets.symmetric(horizontal: width*0.02),
                                   child: Text(
-                                    '02',
+                                    productCartCountList[index].toString(),
                                     style: TextStyle(
                                       fontFamily: 'poppins',
                                       fontWeight: FontWeight.w500,
@@ -219,19 +237,28 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: width*0.085,
-                                  height: width*0.085,
-                                  child: Card(
-                                    color: Colors.black,
-                                    elevation: 7.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25.0)
-                                    ),
-                                    child: Center(
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
+                                InkWell(
+                                  onTap: (){
+
+
+                                    setState((){
+                                      productCartCountList[index]++;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: width*0.085,
+                                    height: width*0.085,
+                                    child: Card(
+                                      color: Colors.black,
+                                      elevation: 7.0,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(25.0)
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
