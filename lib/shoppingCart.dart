@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({Key? key}) : super(key: key);
@@ -59,6 +63,48 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
     1
 
   ];
+  double sub=0;
+
+  double shipping = 7.24;
+
+  @override
+  void initState(){
+    super.initState();
+    getCartData();
+  }
+
+  void getCartData() async{
+
+    String url = "https://prototype.analogenterprises.com/corvit/getCartProducts.php";
+
+    var result =await http.get(Uri.parse(url));
+
+    var json = jsonDecode(result.body);
+
+    print(json[3]["productName"]);
+
+    productNameList.clear();
+
+    for(int i=0 ; i<json.length ;i++){}
+
+  }
+
+  String getSubTotal(){
+
+    sub =0;
+
+    for(int i=0; i< productPriceList.length ; i++){
+
+      double price = double.parse(productPriceList[i]);
+      double cart = productCartCountList[i].toDouble();
+      sub += (price * cart);
+
+    }
+    return sub.toStringAsFixed(2);
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -351,7 +397,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                       children: [
                         Container(
                           child: Text(
-                            '\$45.99',
+                            '\$'+getSubTotal(),
                             style: TextStyle(
                               fontFamily: 'poppins',
                               fontSize: 17,
@@ -402,7 +448,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                       children: [
                         Container(
                           child: Text(
-                            '\$4.99',
+                            '\$'+shipping.toString(),
                             style: TextStyle(
                               fontFamily: 'poppins',
                               fontSize: 17,
@@ -454,7 +500,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                         Container(
                           margin: EdgeInsets.only(right: width*0.02),
                           child: Text(
-                            '(4 items)  ',
+                            '('+(productNameList.length).toString()+' items)  ',
                             style: TextStyle(
                               fontFamily: 'poppins',
                               fontSize: 11,
@@ -464,7 +510,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                         ),
                         Container(
                           child: Text(
-                            '\$50.98',
+                            '\$'+(sub+shipping).toString(),
                             style: TextStyle(
                               fontFamily: 'poppins',
                               fontSize: 17,
