@@ -64,6 +64,7 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
 
   ];
   double sub=0;
+  String baseUrl="https://prototype.analogenterprises.com/corvit/";
 
   double shipping = 7.24;
 
@@ -84,8 +85,24 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
     print(json[3]["productName"]);
 
     productNameList.clear();
+    productPriceList.clear();
+    productSizeList.clear();
+    productImageList.clear();
+    productCartCountList.clear();
 
-    for(int i=0 ; i<json.length ;i++){}
+    for(int i=0 ; i<json.length ;i++){
+
+      productNameList.add(json[i]["productName"]);
+      productPriceList.add(json[i]["productPrice"]);
+      productSizeList.add(json[i]["productSize"]);
+      productImageList.add(json[i]["productImage"]);
+      productCartCountList.add(1);
+
+      setState((){
+        print("data Updated");
+      });
+
+    }
 
   }
 
@@ -196,8 +213,8 @@ class _ShoppingCartSTFState extends State<ShoppingCartSTF> {
                               ),
                               child: Container(
                                 padding: EdgeInsets.all(width*0.015),
-                                child: Image.asset(
-                                  productImageList[index],
+                                child: Image.network(
+                                  baseUrl+productImageList[index],
                                 ),
                               ),
                             ),

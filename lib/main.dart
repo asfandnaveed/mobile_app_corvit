@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app_corvit/foodOnboardingScreen.dart';
 import 'package:mobile_app_corvit/homeScreen.dart';
+import 'package:mobile_app_corvit/loginScreen.dart';
 import 'package:mobile_app_corvit/medicalHomeScrreen.dart';
 import 'package:mobile_app_corvit/sampleScreen.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
@@ -9,7 +10,7 @@ import 'package:mobile_app_corvit/shoppingCart.dart';
 void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: ShoppingCart(),
+    home: LoginScreen(),
   ));
 }
 
