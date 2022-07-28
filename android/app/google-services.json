@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "159781695159",
+    "project_id": "corvit-cit",
+    "storage_bucket": "corvit-cit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159781695159:android:a54c38167e66b7071ea732",
+        "android_client_info": {
+          "package_name": "com.analog.corvit.mobile_app_corvit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159781695159-cm4a8n74trjf2k0aacnv9l0l4vomgrjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-7tRl__wGxwZ5-DabQYhTEGw8OxGqgJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159781695159-cm4a8n74trjf2k0aacnv9l0l4vomgrjg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

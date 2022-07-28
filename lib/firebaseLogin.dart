@@ -28,17 +28,8 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void login() async{
+  void login() {
 
-    String url = "https://prototype.analogenterprises.com/corvit/login.php";
-
-    Map<String,dynamic> loginData = Map<String,dynamic>();
-    loginData['email'] = email.text;
-    loginData['password'] = password.text;
-
-    var result = await http.post(Uri.parse(url),body: loginData);
-
-    print(result.body);
   }
 
   @override
@@ -167,10 +158,10 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
                   child:Text(
                     'Forgot Password ?',
                     style: TextStyle(
-                      fontFamily: 'poppins',
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey
+                        fontFamily: 'poppins',
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey
                     ),
                   ),
                 ),
@@ -233,7 +224,7 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
               ),
               onPressed: (){},
               child: Icon(
-                  Icons.facebook,
+                Icons.facebook,
                 color: Colors.white,
               ),
             ),
