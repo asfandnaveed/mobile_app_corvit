@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -28,13 +29,32 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  void login() {
+  void login() async{
 
+    UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text,
+        password: password.text
+    );
+
+
+
+  }
+
+  Future phoneAuth() async{
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+923014544541',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
   }
 
   @override
   initState(){
     super.initState();
+
+
 
   }
 
@@ -190,7 +210,8 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
                 ),
               ),
               onPressed: (){
-                login();
+                // login();
+                phoneAuth();
               },
               child: Text(
                 'Lets Shop !',
@@ -222,7 +243,10 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
                   ),
                 ),
               ),
-              onPressed: (){},
+              onPressed: (){
+
+                phoneAuth();
+              },
               child: Icon(
                 Icons.facebook,
                 color: Colors.white,
