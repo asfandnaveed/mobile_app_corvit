@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,18 +32,15 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
 
   void login() async{
 
-    UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email.text,
-        password: password.text
-    );
+
 
 
 
   }
 
-  Future phoneAuth() async{
+  void phoneAuth() async{
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+923014544541',
+      phoneNumber: '+923124602030',
       verificationCompleted: (PhoneAuthCredential credential) {},
       verificationFailed: (FirebaseAuthException e) {},
       codeSent: (String verificationId, int? resendToken) {},
@@ -209,9 +207,25 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
                   ),
                 ),
               ),
-              onPressed: (){
+              onPressed: () async{
+                
+                DatabaseReference database = FirebaseDatabase.instance.ref();
                 // login();
-                phoneAuth();
+                UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: email.text,
+                    password: password.text
+                );
+
+                if(user.user != null){
+
+                  print(user.user!.uid);
+                  
+                  await database.child('Users').child(user.user!.uid).set({
+                    "name":"Ali",
+                    "phone":"03xxxxxxxx"
+                  });
+
+                }
               },
               child: Text(
                 'Lets Shop !',

@@ -3,18 +3,19 @@ import 'package:mobile_app_corvit/firebaseLogin.dart';
 import 'package:mobile_app_corvit/foodOnboardingScreen.dart';
 import 'package:mobile_app_corvit/homeScreen.dart';
 import 'package:mobile_app_corvit/medicalHomeScrreen.dart';
+import 'package:mobile_app_corvit/realtime_firbase.dart';
 import 'package:mobile_app_corvit/registerScreen.dart';
 import 'package:mobile_app_corvit/sampleScreen.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:mobile_app_corvit/shoppingCart.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: LoginScreen(),
+    home: RegisterScreen(),
   ));
 }
 

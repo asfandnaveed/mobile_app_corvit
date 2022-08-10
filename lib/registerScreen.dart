@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -278,8 +280,25 @@ class _RegisterScreenStfState extends State<RegisterScreenStf> {
                     ),
                   ),
                 ),
-                onPressed: (){
-                  register();
+                onPressed: () async{
+                  DatabaseReference database = FirebaseDatabase.instance.ref();
+                  // login();
+                  UserCredential user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: email.text,
+                      password: password.text
+                  );
+
+                  if(user.user != null){
+
+                    print(user.user!.uid);
+
+                    await database.child('Users').child(user.user!.uid).set({
+                      "name": name.text,
+                      "phone":phone.text,
+                      "username":username.text
+                    });
+
+                  }
                 },
                 child: Text(
                   'Lets Shop !',
