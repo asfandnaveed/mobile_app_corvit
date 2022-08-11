@@ -2,6 +2,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobile_app_corvit/SocialHomeScreen.dart';
+import 'package:mobile_app_corvit/registerScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -93,6 +95,34 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
           //   child: Image.asset('assets/images/leaf_fall_4.gif'),
           // ),
 
+          ///Sign In Screen
+          InkWell(
+            onTap: (){
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context)=>RegisterScreen())
+              );
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: height*0.08,left: width*0.02),
+              child: Row(
+                children: [
+                  Container(
+                    child: Icon(
+                        Icons.arrow_back_rounded
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                          fontFamily: 'poppins'
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           ///User Data
           Container(
             margin: EdgeInsets.only(top: height*0.2),
@@ -209,8 +239,7 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
               ),
               onPressed: () async{
                 
-                DatabaseReference database = FirebaseDatabase.instance.ref();
-                // login();
+
                 UserCredential user = await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: email.text,
                     password: password.text
@@ -219,11 +248,10 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
                 if(user.user != null){
 
                   print(user.user!.uid);
-                  
-                  await database.child('Users').child(user.user!.uid).set({
-                    "name":"Ali",
-                    "phone":"03xxxxxxxx"
-                  });
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>OnBoradingScreen())
+                  );
 
                 }
               },

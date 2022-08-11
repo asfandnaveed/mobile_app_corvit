@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile_app_corvit/SocialHomeScreen.dart';
+import 'package:mobile_app_corvit/firebaseLogin.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -88,6 +90,33 @@ class _RegisterScreenStfState extends State<RegisterScreenStf> {
             //   child: Image.asset('assets/images/leaf_fall_4.gif'),
             // ),
 
+
+            ///Sign In Screen
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: height*0.08,left: width*0.02),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Icon(
+                          Icons.arrow_back_rounded
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        'LogIn',
+                        style: TextStyle(
+                            fontFamily: 'poppins'
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             ///User Data
             Container(
               margin: EdgeInsets.only(top: height*0.2),
@@ -297,6 +326,10 @@ class _RegisterScreenStfState extends State<RegisterScreenStf> {
                       "phone":phone.text,
                       "username":username.text
                     });
+
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>OnBoradingScreen())
+                    );
 
                   }
                 },

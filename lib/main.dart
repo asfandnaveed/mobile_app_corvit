@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_corvit/SocialHomeScreen.dart';
 import 'package:mobile_app_corvit/firebaseLogin.dart';
 import 'package:mobile_app_corvit/foodOnboardingScreen.dart';
 import 'package:mobile_app_corvit/homeScreen.dart';
@@ -15,7 +16,7 @@ void main() async{
   await Firebase.initializeApp();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: RegisterScreen(),
+    home: LoginScreen(),
   ));
 }
 
