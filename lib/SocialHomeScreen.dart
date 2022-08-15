@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 class OnBoradingScreen extends StatelessWidget {
   const OnBoradingScreen({Key? key}) : super(key: key);
@@ -21,6 +25,69 @@ class _OnBoradingScreenSTFState extends State<OnBoradingScreenSTF> {
   late double height;
   late double width;
 
+  String name="";
+
+
+  final database = FirebaseDatabase.instance.ref();
+
+  late DataSnapshot snapshot;
+
+  @override
+  initState() {
+    super.initState();
+
+    getData();
+    sendPostData();
+  }
+
+
+  void sendPostData() async{
+
+    await database.child('Posts').child(FirebaseAuth.instance.currentUser!.uid).push().set({
+      "image":"",
+      "description":"Sample Post",
+      "Likes":"56",
+      "dateTime":"3454366234235",
+      "comments":[
+        {
+          "uid":"uid",
+          "dateTime":"3454366234235",
+          "Likes":"3",
+          "text":"Nice pic",
+
+        },
+        {
+          "uid":"uid",
+          "dateTime":"296649563895",
+          "Likes":"45",
+          "text":"Thanks",
+
+        },
+      ],
+
+    });
+
+  }
+
+
+  void getData() async{
+    snapshot = await database.child('Users').child(FirebaseAuth.instance.currentUser!.uid).get();
+
+    Map<dynamic,dynamic> map = snapshot.value as Map<dynamic,dynamic>;
+
+    if(snapshot.exists){
+      print(map['phone']);
+
+      name = map['name'];
+
+      setState((){
+        print(map['name']);
+      });
+
+    }
+  }
+
+
   get bottomNavigationBar => null;
   @override
   Widget build(BuildContext context) {
@@ -38,6 +105,16 @@ class _OnBoradingScreenSTFState extends State<OnBoradingScreenSTF> {
           ),
           child: Column(
             children: [
+              ///User Name from DB
+              Container(
+                child: Text(
+                  'Hello '+name,
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
           /// Top Row Title and Icons
           Container(
           child: Row(

@@ -54,7 +54,9 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
   initState(){
     super.initState();
 
+    if(FirebaseAuth.instance.currentUser !=null){
 
+    }
 
   }
 
