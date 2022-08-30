@@ -43,6 +43,12 @@ dependencies:
   firebase_database: ^9.1.0
   loading_indicator: ^3.1.0
   firebase_storage: ^10.3.5
+  webviewx: ^0.2.1
+  flutter_zoom_drawer: ^3.0.3
+  awesome_notifications: ^0.6.21
+  firebase_messaging: ^13.0.0
+  flutter_local_notifications: ^9.8.0+1
+  geolocator: ^9.0.1
 
 dev_dependencies:
   flutter_test:
@@ -89,8 +95,6 @@ flutter:
       - asset: assets/font/Poppins-Regular.ttf
       - asset: assets/font/Poppins-Medium.ttf
       - asset: assets/font/Poppins-SemiBold.ttf
-
-
 
   #   - family: Trajan Pro
   #     fonts:

@@ -100,9 +100,7 @@ class _LoginScreenStfState extends State<LoginScreenStf> {
           ///Sign In Screen
           InkWell(
             onTap: (){
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context)=>RegisterScreen())
-              );
+              Navigator.pushNamed(context, 'SignUp');
             },
             child: Container(
               margin: EdgeInsets.only(top: height*0.08,left: width*0.02),
